@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
     <div className="relative">
       <Search
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
         size={20}
       />
       <input

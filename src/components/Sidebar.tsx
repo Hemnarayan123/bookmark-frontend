@@ -1,6 +1,8 @@
-import React from 'react';
-import { Folder, Tag, Moon, Sun, Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Folder, Tag, Moon, Sun, Menu, X, User, LogOut, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface SidebarProps {
   folders: Array<{ folder: string; count: number }>;
@@ -24,6 +26,14 @@ const Sidebar: React.FC<SidebarProps> = ({
   onClose,
 }) => {
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <>
@@ -42,29 +52,90 @@ const Sidebar: React.FC<SidebarProps> = ({
         }`}
       >
         {/* Header */}
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Bookmarks
-          </h1>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {theme === 'light' ? (
-                <Moon size={20} className="text-gray-600 dark:text-gray-400" />
-              ) : (
-                <Sun size={20} className="text-gray-400" />
-              )}
-            </button>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors lg:hidden"
-            >
-              <X size={20} className="text-gray-600 dark:text-gray-400" />
-            </button>
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Bookmarks
+            </h1>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              >
+                {theme === 'light' ? (
+                  <Moon size={20} className="text-gray-600 dark:text-gray-400" />
+                ) : (
+                  <Sun size={20} className="text-gray-400" />
+                )}
+              </button>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors lg:hidden"
+              >
+                <X size={20} className="text-gray-600 dark:text-gray-400" />
+              </button>
+            </div>
           </div>
+
+          {/* User Profile */}
+          {user && (
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="w-full flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+              >
+                <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center text-white font-semibold">
+                  {user.username.charAt(0).toUpperCase()}
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                    {user.full_name || user.username}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    @{user.username}
+                  </div>
+                </div>
+              </button>
+
+              {/* User Menu Dropdown */}
+              {showUserMenu && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setShowUserMenu(false)} />
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-700 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 z-20 animate-scale-in">
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        navigate('/profile');
+                      }}
+                      className="w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-300"
+                    >
+                      <Settings size={16} />
+                      Profile Settings
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        navigate('/');
+                      }}
+                      className="w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-300"
+                    >
+                      <User size={16} />
+                      Public Feed
+                    </button>
+                    <div className="border-t border-gray-200 dark:border-gray-600" />
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-red-600 dark:text-red-400"
+                    >
+                      <LogOut size={16} />
+                      Logout
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Content */}

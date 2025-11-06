@@ -22,6 +22,7 @@ const BookmarkForm: React.FC<BookmarkFormProps> = ({
   const [title, setTitle] = useState(bookmark?.title || '');
   const [description, setDescription] = useState(bookmark?.description || '');
   const [folder, setFolder] = useState(bookmark?.folder || 'Unsorted');
+  const [isPublic, setIsPublic] = useState(bookmark?.is_public || false);
   const [tags, setTags] = useState<string[]>(bookmark?.tags.map(t => t.name) || []);
   const [newTag, setNewTag] = useState('');
   const [newFolder, setNewFolder] = useState('');
@@ -82,7 +83,7 @@ const BookmarkForm: React.FC<BookmarkFormProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
