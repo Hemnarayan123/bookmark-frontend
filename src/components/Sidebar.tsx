@@ -116,12 +116,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                     <button
                       onClick={() => {
                         setShowUserMenu(false);
-                        navigate('/');
+                        navigate('/public');
                       }}
                       className="w-full flex items-center gap-2 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-300"
                     >
                       <User size={16} />
-                      Public Feed
+                      Public Bookmarks
                     </button>
                     <div className="border-t border-gray-200 dark:border-gray-600" />
                     <button

@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPages';
 import RegisterPage from './pages/RegisterPage';
 import BookmarksPage from './pages/BookmarksPage';
 import HomePage from './pages/HomePage';
+import PublicBookmarksPage from './pages/PublicBookmarksPage';
 import ProfilePage from './pages/ProfilePage';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/public" element={<PublicBookmarksPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
