@@ -83,9 +83,10 @@ const HomePage: React.FC = () => {
                 title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
               >
                 {theme === 'light' ? (
-                  <Moon size={20} className="text-gray-600" />
-                ) : (
                   <Sun size={20} className="text-gray-400" />
+                  
+                ) : (
+                  <Moon size={20} className="text-gray-600" />
                 )}
               </button>
 
