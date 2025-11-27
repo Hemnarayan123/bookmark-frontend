@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <header className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-30 shadow-sm">
-        <div className="absolute inset-0 flex justify-start">
+        <div className="absolute inset-0 flex justify-start c pointer-events-none">
           <div className="w-[400px] h-[400px] rounded-full blur-[133px] shadow-[0_0_200px_rgba(0,0,0,0.25)] bg-[linear-gradient(#1D86C2_58%,_#2B126F_10%)]"></div>
         </div>
         <div className="px-4 lg:px-8 py-4">
@@ -186,40 +186,40 @@ const HomePage: React.FC = () => {
           <div className="flex items-center justify-center gap-4 flex-wrap">
             {isAuthenticated ? (
               <>
-                <Link to="/bookmarks">
+                
                   <button
+                    onClick={() => navigate("/bookmarks")}
                     className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
                     Go to My Bookmarks
                   </button>
-                </Link>
-                <Link to="/public">
+        
                   <button
+                  onClick={() => navigate("/public")}
                     className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg">
                     Browse Public
                   </button>
-                </Link>
               </>
             ) : (
               <>
-                  <Link to="/register">
+               
                     <button
+                      onClick={() => navigate("/register")}
                       className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
                       Get Started Free
                     </button>
-                  </Link>
-                  <Link to="/public">
+                 
                     <button
+                      onClick={() => navigate("/public")}
                       className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg">
                       Browse Public
                     </button>
-                  </Link>
               </>
             )}
           </div>
         </div>
       </div>
 
-      <div className="absolute inset-0 flex items-end justify-end">
+      <div className="absolute inset-0 flex items-end justify-end  pointer-events-none">
         <div className="w-[300px] h-[300px] rounded-full blur-[133px] shadow-[0_0_200px_rgba(0,0,0,0.25)] bg-[linear-gradient(140deg,_#DE4DBC_31%)]"></div>
       </div>
 
