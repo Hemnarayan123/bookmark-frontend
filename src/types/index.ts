@@ -61,7 +61,7 @@ export interface Folder {
 }
 
 export interface CreateBookmarkDTO {
-  url: string;
+  url?: string;
   title?: string;
   description?: string;
   favicon?: string;
@@ -71,6 +71,7 @@ export interface CreateBookmarkDTO {
 }
 
 export interface UpdateBookmarkDTO {
+   url?: string;
   title?: string;
   description?: string;
   folder?: string;

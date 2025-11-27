@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Moon, Sun, LogIn, LogOut, Settings, Bookmark as BookmarkIcon, Globe, Lock, Search, FolderOpen } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
@@ -186,33 +186,33 @@ const HomePage: React.FC = () => {
           <div className="flex items-center justify-center gap-4 flex-wrap">
             {isAuthenticated ? (
               <>
-                <button
-                  onClick={() => navigate('/bookmarks')}
-                  className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl"
-                >
-                  Go to My Bookmarks
-                </button>
-                <button
-                  onClick={() => navigate('/public')}
-                  className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg"
-                >
-                  Browse Public
-                </button>
+                <Link to="/bookmarks">
+                  <button
+                    className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
+                    Go to My Bookmarks
+                  </button>
+                </Link>
+                <Link to="/public">
+                  <button
+                    className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg">
+                    Browse Public
+                  </button>
+                </Link>
               </>
             ) : (
               <>
-                <button
-                  onClick={() => navigate('/register')}
-                  className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl"
-                >
-                  Get Started Free
-                </button>
-                <button
-                  onClick={() => navigate('/public')}
-                  className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg"
-                >
-                  Browse Public
-                </button>
+                  <Link to="/register">
+                    <button
+                      className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
+                      Get Started Free
+                    </button>
+                  </Link>
+                  <Link to="/public">
+                    <button
+                      className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors font-semibold text-lg">
+                      Browse Public
+                    </button>
+                  </Link>
               </>
             )}
           </div>
