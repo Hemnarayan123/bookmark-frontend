@@ -277,7 +277,7 @@ const HomePage: React.FC = () => {
         <div className="px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left text-gray-600 dark:text-gray-400">
-              <p>© 2024 Bookmark Manager. Made with Hemnarayan</p>
+              <p>© 2024 Bookmark Manager. Made By Hemnarayan</p>
             </div>
             <div className="flex gap-6">
               <button
