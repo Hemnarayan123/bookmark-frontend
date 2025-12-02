@@ -116,9 +116,9 @@ const PublicBookmarksPage: React.FC = () => {
               <button
                 onClick={toggleTheme}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
-                {theme === 'light' ? (
+                {theme === 'dark' ? (
                   <Moon size={20} className="text-gray-600" />
                 ) : (
                   <Sun size={20} className="text-gray-400" />

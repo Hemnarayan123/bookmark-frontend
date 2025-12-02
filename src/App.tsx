@@ -9,6 +9,8 @@ import BookmarksPage from './pages/BookmarksPage';
 import HomePage from './pages/HomePage';
 import PublicBookmarksPage from './pages/PublicBookmarksPage';
 import ProfilePage from './pages/ProfilePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/public" element={<PublicBookmarksPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
             {/* Protected Routes */}
             <Route

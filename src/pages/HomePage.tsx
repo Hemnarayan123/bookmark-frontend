@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Moon, Sun, LogIn, LogOut, Settings, Bookmark as BookmarkIcon, Globe, Lock, Search, FolderOpen } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
-import FogBox from '../components/FogBackground';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -276,8 +275,24 @@ const HomePage: React.FC = () => {
       {/* Footer */}
       <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <div className="px-4 lg:px-8 py-8">
-          <div className="text-center text-gray-600 dark:text-gray-400">
-            <p>© 2025 Bookmark Manager. Made By Hemnarayan</p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-center md:text-left text-gray-600 dark:text-gray-400">
+              <p>© 2024 Bookmark Manager. Made with Hemnarayan</p>
+            </div>
+            <div className="flex gap-6">
+              <button
+                onClick={() => navigate('/privacy-policy')}
+                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm"
+              >
+                Privacy Policy
+              </button>
+              <button
+                onClick={() => navigate('/contact')}
+                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm"
+              >
+                Contact
+              </button>
+            </div>
           </div>
         </div>
       </footer>
